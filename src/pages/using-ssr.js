@@ -1,47 +1,35 @@
-import * as React from "react"
+import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const UsingSSR = ({ serverData }) => {
+  console.log(serverData);
   return (
     <Layout>
       <h1>
         This page is <b>rendered server-side</b>
       </h1>
       <p>
-        This page is rendered server side every time the page is requested.
-        Reload it to see a(nother) random photo from{" "}
-        <code>dog.ceo/api/breed/shiba/images/random</code>:
+        This page is rendered server side each time the page is requested.
+        Reload it to see a(nother) random dawg photo.
       </p>
+      <br />
       <img
-        style={{ width: "320px", borderRadius: "var(--border-radius)" }}
         alt="A random dog"
         src={serverData.message}
       />
-      <p>
-        To learn more, head over to our{" "}
-        <a href="https://www.gatsbyjs.com/docs/reference/rendering-options/server-side-rendering/">
-          documentation about Server Side Rendering
-        </a>
-        .
-      </p>
-      <Link to="/">Go back to the homepage</Link>
+      <br />
+      <p>URL de la imagen: <b>{serverData.message}</b></p>
     </Layout>
   )
 }
 
-export const Head = () => <Seo title="Using SSR" />
-
-export default UsingSSR
-
 export async function getServerData() {
   try {
-    const res = await fetch(`https://dog.ceo/api/breed/shiba/images/random`)
-    if (!res.ok) {
-      throw new Error(`Response failed`)
-    }
+    const res = await fetch(`https://dog.ceo/api/breed/shiba/images/random`);
+    if (!res.ok) throw new Error(`Response failed`);
     return {
       props: await res.json(),
     }
@@ -49,7 +37,10 @@ export async function getServerData() {
     return {
       status: 500,
       headers: {},
-      props: {},
+      props: { message: "something went wrong" },
     }
   }
-}
+};
+
+export const Head = () => <Seo title="Using SSR" />;
+export default UsingSSR;

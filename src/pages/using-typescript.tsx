@@ -1,6 +1,6 @@
 // If you don't want to use TypeScript you can delete this file!
-import * as React from "react"
-import { PageProps, Link, graphql, HeadFC } from "gatsby"
+import React from "react"
+import { PageProps, graphql, HeadFC } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -25,27 +25,11 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({
       example <code>gatsby-config.ts</code>).
     </p>
     <p>
-      For type checking you'll want to install <code>typescript</code> via npm
-      and run <code>tsc --init</code> to create a <code>tsconfig</code> file.
-    </p>
-    <p>
       You're currently on the page <code>{location.pathname}</code> which was
       built on {data.site.buildTime}.
     </p>
-    <p>
-      To learn more, head over to our{" "}
-      <a href="https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/">
-        documentation about TypeScript
-      </a>
-      .
-    </p>
-    <Link to="/">Go back to the homepage</Link>
   </Layout>
-)
-
-export const Head: HeadFC<DataProps> = () => <Seo title="Using TypeScript" />
-
-export default UsingTypescript
+);
 
 export const query = graphql`
   {
@@ -53,4 +37,7 @@ export const query = graphql`
       buildTime(formatString: "YYYY-MM-DD hh:mm a z")
     }
   }
-`
+`;
+
+export const Head: HeadFC<DataProps> = () => <Seo title="Using TypeScript" />;
+export default UsingTypescript;
