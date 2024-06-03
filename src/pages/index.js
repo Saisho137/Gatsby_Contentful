@@ -4,10 +4,11 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Counter from "../components/Counter/Counter"
 //import * as styles from "../components/index.module.css"
 
 const IndexPage = () => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
 
   const handleClick = () => {
     setCounter(counter + 1);
@@ -25,8 +26,10 @@ const IndexPage = () => {
         formats={["auto", "webp", "avif"]}
         alt="Static image"
       />
-      <p>{counter}</p>
+
+      <Counter counter={counter} />
       <button onClick={handleClick}> Agregar </button>
+
       <br />
       <Link to="/page-2">Go to the second page</Link>
       <br />
