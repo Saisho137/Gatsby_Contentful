@@ -15,6 +15,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.24.6",
+    "@types/jest": "^29.5.12",
     "babel-jest": "^29.7.0",
     "babel-preset-gatsby": "^3.13.2",
     "identity-obj-proxy": "^3.0.0",
@@ -32,7 +34,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest --watch --coverage"
+    "test": "jest --watchAll --coverage"
   },
   "repository": {
     "type": "git",
